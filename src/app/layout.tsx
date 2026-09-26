@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/shared/lib/utils"
 import type { Metadata } from "next"
 import { Lora, Manrope } from "next/font/google"
 import "./globals.css"

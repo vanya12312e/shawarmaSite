@@ -10,6 +10,7 @@ const Header = () => {
 		{ name: 'Де ми', onClick: () => { console.log('Де ми') } },
 		{ name: 'Контакти', onClick: () => { console.log('Контакти') } },
 	]
+
 	return (
 		<header className='bg-[#fff9f7] py-5 px-6 flex items-center justify-between shadow-md shadow-black/5'>
 			<div className='container flex items-center justify-between mx-auto'>
@@ -29,12 +30,12 @@ const Header = () => {
 						</Link>
 					))}
 				</nav>
-				<a className='font-manrope font-bold text-neutral text-xl flex items-center gap-1 hover:text-primary-dark transition-colors duration-300'
-					href='tel:+380678901234'>
+				<a className='font-manrope font-bold text-neutral text-xl flex items-center gap-1 hover:text-primary-dark transition-colors duration-300' href='tel:+380678901234'>
 					<PhoneCall color='#a93103' />
 					+380 (67) 890-12-34
 				</a>
 			</div>
+
 		</header>
 	)
 }
