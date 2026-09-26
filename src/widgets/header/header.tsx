@@ -12,10 +12,10 @@ const Header = () => {
 	]
 
 	return (
-		<header className='bg-[#fff9f7] py-5 px-6 flex items-center justify-between shadow-md shadow-black/5'>
+		<header className='bg-[#fff9f7] py-5 flex items-center justify-between shadow-md shadow-black/5'>
 			<div className='container flex items-center justify-between mx-auto'>
 				<div>
-					<h1 className='font-lora text-3xl text-neutral font-bold uppercase tracking-tight'>вогонь & лаваш</h1>
+					<h1 className='font-lora text-2xl sm:text-3xl text-neutral font-bold uppercase tracking-tight'>вогонь & лаваш</h1>
 					<p className='font-manrope font-bold text-primary-dark text-xl'>Крафтова шаурма</p>
 				</div>
 				<nav className='hidden lg:flex gap-8'>
@@ -30,7 +30,7 @@ const Header = () => {
 						</Link>
 					))}
 				</nav>
-				<a className='font-manrope font-bold text-neutral text-xl flex items-center gap-1 hover:text-primary-dark transition-colors duration-300' href='tel:+380678901234'>
+				<a className='font-manrope font-bold text-neutral sm:text-xl text-base flex items-center gap-1 hover:text-primary-dark transition-colors duration-300' href='tel:+380678901234'>
 					<PhoneCall color='#a93103' />
 					+380 (67) 890-12-34
 				</a>

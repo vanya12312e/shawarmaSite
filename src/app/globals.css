@@ -11,6 +11,11 @@
   --color-neutral: #1A1412;
 }
 
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
 body {
   background-color: #fff8f6;
 }
