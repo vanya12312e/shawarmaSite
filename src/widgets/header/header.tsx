@@ -1,42 +1,102 @@
 'use client'
 
+import { motionTokens, springs } from '@/shared/lib/motion-tokens'
 import { PhoneCall } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
 const Header = () => {
+	const [isScrolled, setIsScrolled] = useState(false)
+	const reduce = useReducedMotion()
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 20)
+		}
+
+		window.addEventListener('scroll', handleScroll)
+
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
 
 	const navLinks = [
-		{ name: 'Меню', onClick: () => { console.log('Меню') } },
-		{ name: 'Про нас', onClick: () => { console.log('Про нас') } },
-		{ name: 'Де ми', onClick: () => { console.log('Де ми') } },
-		{ name: 'Контакти', onClick: () => { console.log('Контакти') } },
+		{ name: 'Меню', href: '#menu' },
+		{ name: 'Про нас', href: '#about' },
+		{ name: 'Де ми', href: '#whereWeAre' },
+		{ name: 'Контакти', href: 'tel:+380678901234' },
 	]
 
 	return (
-		<header className='bg-[#fff9f7] py-5 flex items-center justify-between shadow-md shadow-black/5'>
-			<div className='container flex items-center justify-between mx-auto'>
+		<motion.header
+			initial={reduce ? false : { y: -motionTokens.distance.sm, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ duration: motionTokens.duration.normal, ease: motionTokens.easing.smooth }}
+			className={`
+        sticky top-0 z-50
+        transition-all duration-300 ease-in-out
+        ${isScrolled
+					? 'bg-[#fff9f7]/80 py-2.5 backdrop-blur-md shadow-md shadow-black/5'
+					: 'bg-[#fff9f7] py-5 shadow-md shadow-black/5'
+				}
+      `}
+		>
+			<section className='container mx-auto flex items-center justify-between'>
 				<div>
-					<h1 className='font-lora text-2xl sm:text-3xl text-neutral font-bold uppercase tracking-tight'>вогонь & лаваш</h1>
-					<p className='font-manrope font-bold text-primary-dark text-xl'>Крафтова шаурма</p>
+					<h1
+						className={`
+              font-lora text-2xl font-bold uppercase tracking-tight text-neutral
+              transition-all duration-300 ease-in-out
+              sm:text-3xl
+            `}
+					>
+						вогонь & лаваш
+					</h1>
+
+					<p
+						className={`
+              overflow-hidden font-manrope text-xl font-bold text-primary-dark
+              transition-all duration-300 ease-in-out
+              ${isScrolled
+								? 'max-h-0 -translate-y-1 opacity-0'
+								: 'max-h-10 translate-y-0 opacity-100'
+							}
+            `}
+					>
+						Крафтова шаурма
+					</p>
 				</div>
-				<nav className='hidden lg:flex gap-8'>
+
+				<nav className='hidden gap-8 lg:flex'>
 					{navLinks.map((link) => (
-						<Link
+						<motion.span
 							key={link.name}
-							className='relative font-manrope font-bold text-lg text-[#59413A] transition-colors duration-300 hover:text-primary-dark after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary-dark after:transition-transform after:duration-300 hover:after:scale-x-100'
-							onClick={link.onClick}
-							href='#'
+							whileHover={reduce ? undefined : { y: -2 }}
+							transition={springs.snappy}
+							className='inline-block'
 						>
-							{link.name}
-						</Link>
+							<Link
+								href={link.href}
+								className='relative font-manrope text-lg font-bold text-[#59413A] transition-colors duration-300 hover:text-primary-dark after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary-dark after:transition-transform after:duration-300 hover:after:scale-x-100'
+							>
+								{link.name}
+							</Link>
+						</motion.span>
 					))}
 				</nav>
-				<a className='font-manrope font-bold text-neutral sm:text-xl text-base flex items-center gap-1 hover:text-primary-dark transition-colors duration-300' href='tel:+380678901234'>
-					<PhoneCall color='#a93103' />
-					+380 (67) 890-12-34
-				</a>
-			</div>
 
-		</header>
+				<motion.a
+					href='tel:+380678901234'
+					whileHover={reduce ? undefined : { scale: motionTokens.scale.pop }}
+					whileTap={reduce ? undefined : { scale: motionTokens.scale.press }}
+					transition={springs.snappy}
+					className='flex items-center gap-1 font-manrope text-base font-bold text-neutral transition-colors duration-300 hover:text-primary-dark sm:text-xl'
+				>
+					<PhoneCall className='text-primary-dark' />
+					+380 (67) 890-12-34
+				</motion.a>
+			</section>
+		</motion.header>
 	)
 }
 
