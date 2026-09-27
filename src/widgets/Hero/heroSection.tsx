@@ -22,7 +22,8 @@ const Hero = () => {
 						щодня як для найкращих друзів.
 					</p>
 					<button className='bg-primary-dark text-white font-manrope font-bold text-[14px] px-6 py-4 rounded-lg mt-6 hover:bg-primary transition-all duration-300 w-54 flex items-center  gap-2 justify-center flex-nowrap md:inline-flex md:mr-4 md:w-1/3'>
-						Переглянути меню
+
+						<a href="#menu">Переглянути меню</a>
 						<Utensils size={20} />
 					</button>
 					<button className='bg-[#f9ebe7] text-neutral font-manrope font-bold text-[14px] px-6 py-4 rounded-lg mt-3 hover:bg-[#f9ebe7]/60 transition-all duration-300 w-[calc(216px-5%)] flex items-center  gap-2 justify-center flex-nowrap md:inline-flex md:w-1/4'>
@@ -50,7 +51,7 @@ const Hero = () => {
 				</div>
 			</div>
 
-			<article className='w-full bg-[#f3e5e1] py-3 px-4 lg:mt-10 flex flex-wrap md:flex-nowrap md:justify-between md:mt-4'>
+			<article className='w-full bg-[#f3e5e1] py-3 px-4 lg:mt-10 flex flex-wrap md:flex-nowrap md:justify-between md:mt-4 mt-2'>
 				{infoItems.map((item, index) => (
 					<div key={index} className='flex gap-2 items-center container'>
 						<div className='size-2 bg-primary-dark rounded-full' />

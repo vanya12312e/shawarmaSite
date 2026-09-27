@@ -23,3 +23,11 @@ body {
 button, a {
   cursor: pointer;
 }
+html {
+  scrollbar-width: none; 
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
