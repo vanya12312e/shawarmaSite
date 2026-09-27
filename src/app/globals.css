@@ -24,8 +24,7 @@ button, a {
   cursor: pointer;
 }
 html {
-  scrollbar-width: none; 
-  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 html::-webkit-scrollbar {

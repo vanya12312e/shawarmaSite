@@ -1,4 +1,5 @@
 import { cn } from "@/shared/lib/utils"
+import { SmoothScroll } from "@/shared/ui/SmoothScroll"
 import Footer from '@/widgets/Footer/footer'
 import { Header } from '@/widgets/header'
 import type { Metadata } from "next"
@@ -27,9 +28,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={cn("h-screen", "antialiased", lora.variable, manrope.variable)}
     >
       <body className="min-h-full">
-        <Header />
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <Header />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   )

@@ -1,11 +1,14 @@
 'use client'
 
+import { motionTokens, springs } from '@/shared/lib/motion-tokens'
 import { PhoneCall } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false)
+	const reduce = useReducedMotion()
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -25,7 +28,10 @@ const Header = () => {
 	]
 
 	return (
-		<header
+		<motion.header
+			initial={reduce ? false : { y: -motionTokens.distance.sm, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ duration: motionTokens.duration.normal, ease: motionTokens.easing.smooth }}
 			className={`
         sticky top-0 z-50
         transition-all duration-300 ease-in-out
@@ -63,25 +69,34 @@ const Header = () => {
 
 				<nav className='hidden gap-8 lg:flex'>
 					{navLinks.map((link) => (
-						<Link
+						<motion.span
 							key={link.name}
-							href={link.href}
-							className='relative font-manrope text-lg font-bold text-[#59413A] transition-colors duration-300 hover:text-primary-dark after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary-dark after:transition-transform after:duration-300 hover:after:scale-x-100'
+							whileHover={reduce ? undefined : { y: -2 }}
+							transition={springs.snappy}
+							className='inline-block'
 						>
-							{link.name}
-						</Link>
+							<Link
+								href={link.href}
+								className='relative font-manrope text-lg font-bold text-[#59413A] transition-colors duration-300 hover:text-primary-dark after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary-dark after:transition-transform after:duration-300 hover:after:scale-x-100'
+							>
+								{link.name}
+							</Link>
+						</motion.span>
 					))}
 				</nav>
 
-				<a
+				<motion.a
 					href='tel:+380678901234'
+					whileHover={reduce ? undefined : { scale: motionTokens.scale.pop }}
+					whileTap={reduce ? undefined : { scale: motionTokens.scale.press }}
+					transition={springs.snappy}
 					className='flex items-center gap-1 font-manrope text-base font-bold text-neutral transition-colors duration-300 hover:text-primary-dark sm:text-xl'
 				>
 					<PhoneCall className='text-primary-dark' />
 					+380 (67) 890-12-34
-				</a>
+				</motion.a>
 			</section>
-		</header>
+		</motion.header>
 	)
 }
 
