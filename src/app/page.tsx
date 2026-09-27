@@ -8,7 +8,6 @@ import WhereWeAre from '@/widgets/WhereWeAre/WhereWeAre'
 export default function Home() {
   return (
     <>
-      <Header />
       <Hero />
       <ProductSort />
       <Feutures />

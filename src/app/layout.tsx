@@ -1,4 +1,6 @@
 import { cn } from "@/shared/lib/utils"
+import Footer from '@/widgets/Footer/footer'
+import { Header } from '@/widgets/header'
 import type { Metadata } from "next"
 import { Lora, Manrope } from "next/font/google"
 import "./globals.css"
@@ -24,7 +26,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={cn("h-screen", "antialiased", lora.variable, manrope.variable)}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
