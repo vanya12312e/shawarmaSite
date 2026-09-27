@@ -31,3 +31,6 @@ html {
 html::-webkit-scrollbar {
   display: none;
 }
+p {
+  @apply font-manrope
+}
