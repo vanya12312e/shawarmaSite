@@ -4,7 +4,7 @@ import { Clock, MapPin, Navigation2, Phone } from 'lucide-react'
 const WhereWeAre = () => {
 	return (
 		<>
-			<div className='container'>
+			<div className='container' id='whereWeAre'>
 				<p className='text-primary-dark text-center font-medium mt-8'>Чекаємо в гості</p>
 				<h1 className='font-lora text-3xl text-neutral font-semibold text-center'>
 					Де ми знаходимось

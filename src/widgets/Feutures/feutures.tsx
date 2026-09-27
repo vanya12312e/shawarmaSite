@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const Feutures = () => {
 	return (
-		<section className='w-full bg-[#fef1ed]'>
+		<section className='w-full bg-[#fef1ed]' id='about'>
 			<div className='container mx-auto lg:flex lg:gap-8 py-15'>
 				<div className='relative w-full h-66 lg:w-1/2 lg:h-130'>
 					<Image
