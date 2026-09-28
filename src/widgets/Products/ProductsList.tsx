@@ -23,7 +23,7 @@ const ProductsList = ({ products }: { products: IProduct[] }) => {
 							exit={{ opacity: 0, scale: motionTokens.scale.subtle }}
 							transition={springs.gentle}
 							whileHover={{ y: -4 }}
-							className='w-full max-w-[358px] mt-1 mb-4 bg-white rounded-xl md:max-w-[392px] lg:h-full lg:flex lg:flex-col lg:justify-between lg:p-2'
+							className='w-full max-w-[358px] mt-1 mb-4 bg-white rounded-xl md:max-w-[392px] lg:h-full lg:flex lg:flex-col lg:justify-between px-2 pb-2'
 						>
 							{p.thumbnail && (
 								<div className='relative w-full h-[268px] md:h-[208px]'>
