@@ -111,7 +111,7 @@ const Hero = () => {
 				className='w-full bg-[#f3e5e1] py-3 px-4 lg:mt-10 flex flex-wrap md:flex-nowrap md:justify-between md:mt-4 mt-2'
 			>
 				{infoItems.map((item, index) => (
-					<div key={index} className='flex gap-2 items-center container'>
+					<div key={index} className='flex gap-2 items-center container md:justify-center'>
 						<div className='size-2 bg-primary-dark rounded-full' />
 						<span className='text-tertiary font-semibold text-[15px]'>{item}</span>
 					</div>
