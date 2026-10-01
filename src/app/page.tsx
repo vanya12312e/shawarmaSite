@@ -3,16 +3,13 @@ import Hero from '@/widgets/Hero/heroSection'
 import ProductSort from '@/widgets/Products/productSort'
 import WhereWeAre from '@/widgets/WhereWeAre/WhereWeAre'
 
-
-export default async function Home() {
-
+export default function Home() {
   return (
     <>
       <Hero />
       <ProductSort />
       <Feutures />
       <WhereWeAre />
-      {console.log()}
     </>
   )
 }
