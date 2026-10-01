@@ -1,8 +1,7 @@
 'use client'
-
 import { motionTokens } from '@/shared/lib/motion-tokens'
-import { motion, useReducedMotion } from 'motion/react'
 import { Clock, Flame, MapPin, Phone } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
 
 const columns = [
 	{
@@ -102,11 +101,11 @@ const columns = [
 					<ul className='space-y-2.5 text-sm'>
 						<li>
 							<a
-								href='tel:+380678901234'
+								href={`tel:${process.env.NEXT_PUBLIC_PHONE_NUMBER?.toString().replace(/\D/g, '')}`}
 								className='flex items-center gap-2 font-bold transition-colors hover:primary-dark/80'
 							>
 								<Phone className='size-3.5 text-primary-dark' />
-								<span>+380 (67) 890-12-34</span>
+								<span>{process.env.NEXT_PUBLIC_PHONE_NUMBER}</span>
 							</a>
 						</li>
 
