@@ -39,7 +39,9 @@ const cards = [
 		title: 'Швидке передзамовлення',
 		body: (
 			<>
-				<a className='text-primary-dark text-[20px] font-lora' href='tel:+380678901234'>+380 (67) 890-12-34</a>
+				<a className='text-primary-dark text-[20px] font-lora' href={`tel:${process.env.NEXT_PUBLIC_PHONE_NUMBER?.toString().replace(/\D/g, '')}`}>
+					{process.env.NEXT_PUBLIC_PHONE_NUMBER}
+				</a>
 				<p className='text-[#59413A] text-[14px]'>
 					Телефонуйте за 10 хв до приходу —
 					заберете без черги!

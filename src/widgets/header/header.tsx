@@ -1,11 +1,9 @@
 'use client'
-
 import { motionTokens, springs } from '@/shared/lib/motion-tokens'
 import { PhoneCall } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false)
 	const reduce = useReducedMotion()
@@ -14,7 +12,6 @@ const Header = () => {
 		const handleScroll = () => {
 			setIsScrolled(window.scrollY > 20)
 		}
-
 		window.addEventListener('scroll', handleScroll)
 
 		return () => window.removeEventListener('scroll', handleScroll)
@@ -24,7 +21,7 @@ const Header = () => {
 		{ name: 'Меню', href: '#menu' },
 		{ name: 'Про нас', href: '#about' },
 		{ name: 'Де ми', href: '#whereWeAre' },
-		{ name: 'Контакти', href: 'tel:+380678901234' },
+		{ name: 'Контакти', href: `tel:${process.env.NEXT_PUBLIC_PHONE_NUMBER?.toString().replace(/\D/g, '')}` },
 	]
 
 	return (
@@ -86,14 +83,14 @@ const Header = () => {
 				</nav>
 
 				<motion.a
-					href='tel:+380678901234'
+					href={`tel:${process.env.NEXT_PUBLIC_PHONE_NUMBER?.toString().replace(/\D/g, '')}`}
 					whileHover={reduce ? undefined : { scale: motionTokens.scale.pop }}
 					whileTap={reduce ? undefined : { scale: motionTokens.scale.press }}
 					transition={springs.snappy}
 					className='flex items-center gap-1 font-manrope text-base font-bold text-neutral transition-colors duration-300 hover:text-primary-dark sm:text-xl'
 				>
 					<PhoneCall className='text-primary-dark' />
-					+380 (67) 890-12-34
+					<span>{process.env.NEXT_PUBLIC_PHONE_NUMBER}</span>
 				</motion.a>
 			</section>
 		</motion.header>
