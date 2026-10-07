@@ -31,5 +31,5 @@ export const productsApi = {
     }
 
     return (data ?? []) as Product[]
-  },
+  }
 }
